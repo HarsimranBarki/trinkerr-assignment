@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { UserContext } from "./libs/userContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -7,7 +8,12 @@ const App = () => {
 
   return (
     <UserContext.Provider value={providerValue}>
-      <div className=""></div>
+      <Router>
+        <Switch>
+          <Route path="/about"></Route>
+          <Route path="/"></Route>
+        </Switch>
+      </Router>
     </UserContext.Provider>
   );
 };
