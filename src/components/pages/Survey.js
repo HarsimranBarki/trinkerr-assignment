@@ -36,11 +36,12 @@ const Survey = () => {
 
   const handleImage = (direction) => {
     if (swipedCount === 5) return;
-    toastGenerate(
-      `${user.name} you have ${
-        direction === "left" ? "accepted" : "rejected"
-      } the image`
-    );
+    let message = "";
+    if (direction === "left") message = "selected";
+    if (direction === "right") message = "rejected";
+    if (direction === "skipped") message = "skipped";
+
+    toastGenerate(`${user.name} you have ${message} the image`);
     setSwipeCount((prev) => prev + 1);
     setUser({ ...user, totalSwipedSwiped: swipedCount + 1 });
     updateLocalStorage();
@@ -74,9 +75,13 @@ const Survey = () => {
 
   useEffect(() => {
     if (!user) history.push("/");
+    let timer = setTimeout(() => {
+      handleImage("skipped");
+    }, 5000);
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
+      clearTimeout(timer);
     };
   }, [user, history]);
 
