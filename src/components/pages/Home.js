@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import VerifyPhone from "../forms/VerifyPhone";
 import LoginImage from "../../images/login.svg";
+import VerifyOTP from "../forms/VerifyOTP";
+import VerifyName from "../forms/VerifyName";
 
 const Home = () => {
+  const [signupState, setSignupState] = useState("phone");
+
   return (
     <div className=" w-screen flex h-screen  justify-between items-center">
       <div className="left mx-auto ">
@@ -10,7 +14,13 @@ const Home = () => {
         <p className="text-sm text-gray-800 mt-3 font-medium">
           We use OTP for signin into your account
         </p>
-        <VerifyPhone />
+        {signupState === "phone" && (
+          <VerifyPhone setSignupState={setSignupState} />
+        )}
+        {signupState === "otp" && <VerifyOTP setSignupState={setSignupState} />}
+        {signupState === "name" && (
+          <VerifyName setSignupState={setSignupState} />
+        )}
       </div>
       <div className="right ">
         <img src={LoginImage} alt="loginImage" className="h-screen w-full" />

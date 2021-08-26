@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const VerifyPhone = ({ setSignupState }) => {
-  const [phone, setPhone] = useState("");
+const VerifyName = () => {
+  const [name, setName] = useState("");
   const toastGenerate = (message) => toast.error(message);
 
   // Regex For Formatting Input Should Be Number
-  const onlyNumbers = (e) => {
+  const onlyAplhabets = (e) => {
     e.preventDefault();
-    let value = e.target.value.replace(/[^\d]/g, "");
-    setPhone(value);
+    let value = e.target.value.replace(/[^a-zA-Z, ]/, "");
+    setName(value);
   };
 
   const validateInput = (e) => {
     e.preventDefault();
-    if (phone.length !== 10) return toastGenerate("Number should be 10 Digits");
-    setSignupState("otp");
+    if (name.length === "") return toastGenerate("Name can't be empty");
   };
 
   return (
@@ -25,9 +24,9 @@ const VerifyPhone = ({ setSignupState }) => {
         <input
           type="text"
           className="form-input px-4 py-2 border-gray-300 rounded mt-2 shadow-inner"
-          placeholder="Enter Your Number"
-          value={phone}
-          onChange={(e) => onlyNumbers(e, "phone")}
+          placeholder="Enter Your Name"
+          value={name}
+          onChange={(e) => onlyAplhabets(e)}
           autoFocus
         />
         <br />
@@ -35,11 +34,11 @@ const VerifyPhone = ({ setSignupState }) => {
           type="submit"
           className="bg-indigo-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-indigo-700 transition"
         >
-          Get OTP
+          Submit
         </button>
       </form>
     </div>
   );
 };
 
-export default VerifyPhone;
+export default VerifyName;
