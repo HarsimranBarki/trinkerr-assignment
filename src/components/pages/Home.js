@@ -3,6 +3,7 @@ import VerifyPhone from "../forms/VerifyPhone";
 import LoginImage from "../../images/login.svg";
 import VerifyOTP from "../forms/VerifyOTP";
 import VerifyName from "../forms/VerifyName";
+import { AnimatePresence } from "framer-motion";
 
 const Home = () => {
   const [signupState, setSignupState] = useState("phone");
@@ -14,13 +15,17 @@ const Home = () => {
         <p className="text-sm text-gray-800 mt-3 font-medium">
           We use OTP for signin into your account
         </p>
-        {signupState === "phone" && (
-          <VerifyPhone setSignupState={setSignupState} />
-        )}
-        {signupState === "otp" && <VerifyOTP setSignupState={setSignupState} />}
-        {signupState === "name" && (
-          <VerifyName setSignupState={setSignupState} />
-        )}
+        <AnimatePresence>
+          {signupState === "phone" && (
+            <VerifyPhone setSignupState={setSignupState} />
+          )}
+          {signupState === "otp" && (
+            <VerifyOTP setSignupState={setSignupState} />
+          )}
+          {signupState === "name" && (
+            <VerifyName setSignupState={setSignupState} />
+          )}
+        </AnimatePresence>
       </div>
       <div className="right ">
         <img src={LoginImage} alt="loginImage" className="h-screen w-full" />
