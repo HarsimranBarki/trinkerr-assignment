@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
 import ImageCard from "../card/ImageCard";
@@ -16,7 +16,6 @@ const Survey = () => {
     if (swipedCount !== 5) return imageCollection[swipedCount];
     return null;
   });
-  const toastGenerate = (message) => toast.success(message);
 
   const variants = {
     visible: {
@@ -34,44 +33,59 @@ const Survey = () => {
     },
   };
 
-  const handleImage = (direction) => {
-    if (swipedCount === 5) return;
-    let message = "";
-    if (direction === "left") message = "selected";
-    if (direction === "right") message = "rejected";
-    if (direction === "skipped") message = "skipped";
-
-    toastGenerate(`${user.name} you have ${message} the image`);
-    setSwipeCount((prev) => prev + 1);
-    setUser({ ...user, totalSwipedSwiped: swipedCount + 1 });
-    updateLocalStorage();
-    setCurrentImage(imageCollection[swipedCount + 1]);
-  };
-
-  const updateLocalStorage = () => {
+  const updateLocalStorage = useCallback(() => {
     let localUser = JSON.parse(localStorage.getItem("user"));
     let localCollection = JSON.parse(localStorage.getItem("userCollection"));
 
     localUser.totalSwiped = swipedCount + 1;
-    localCollection.map((e) => {
-      if (e.phone === user.phone) e.totalSwiped = swipedCount + 1;
+    localCollection.forEach((e) => {
+      if (e.phone === user.phone) {
+        return (e.totalSwiped = swipedCount + 1);
+      }
     });
 
     localStorage.setItem("user", JSON.stringify(localUser));
     localStorage.setItem("userCollection", JSON.stringify(localCollection));
-  };
+  }, [swipedCount, user.phone]);
 
-  const handleKeyPress = (event) => {
-    if (event.keyCode === 37) {
-      event.stopPropagation();
-      handleImage("left");
-    } else if (event.keyCode === 39) {
-      event.stopPropagation();
-      handleImage("right");
-    } else {
-      return null;
-    }
-  };
+  const handleImage = useCallback(
+    (direction) => {
+      if (swipedCount >= 5) return;
+      let message = "";
+      if (direction === "left") message = "selected";
+      if (direction === "right") message = "rejected";
+      if (direction === "skipped") message = "skipped";
+
+      toast.success(`${user.name} you have ${message} the image`);
+      setSwipeCount((prev) => prev + 1);
+      setUser({ ...user, totalSwipedSwiped: swipedCount + 1 });
+      updateLocalStorage();
+      setCurrentImage(imageCollection[swipedCount + 1]);
+    },
+    [
+      updateLocalStorage,
+      setSwipeCount,
+      setUser,
+      setCurrentImage,
+      swipedCount,
+      user,
+    ]
+  );
+
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (event.keyCode === 37) {
+        event.stopPropagation();
+        handleImage("left");
+      } else if (event.keyCode === 39) {
+        event.stopPropagation();
+        handleImage("right");
+      } else {
+        return null;
+      }
+    },
+    [handleImage]
+  );
 
   useEffect(() => {
     if (!user) history.push("/");
@@ -83,7 +97,7 @@ const Survey = () => {
       window.removeEventListener("keydown", handleKeyPress);
       clearTimeout(timer);
     };
-  }, [user, history]);
+  }, [user, history, handleImage, handleKeyPress]);
 
   return (
     <div className="p-10">
