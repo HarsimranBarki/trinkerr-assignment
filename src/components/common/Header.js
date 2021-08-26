@@ -21,7 +21,8 @@ function Header() {
             <NavLink
               to="/"
               exact
-              activeClassName="border-b-2 py-2 border-blue-600 hover:border-blue-900 font-bold"
+              className="py-2  font-medium"
+              activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
             >
               HOME
             </NavLink>
@@ -30,7 +31,8 @@ function Header() {
             <NavLink
               to="/survey"
               exact
-              activeClassName="border-b-2 py-2 border-blue-600 hover:border-blue-900"
+              className="py-2  font-medium"
+              activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
             >
               SURVEY
             </NavLink>
