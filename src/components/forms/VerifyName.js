@@ -21,6 +21,7 @@ const VerifyName = () => {
     e.preventDefault();
     if (name.length === "") return toastGenerate("Name can't be empty");
     setUser({ ...user, name: name });
+    localStorage.setItem("user", JSON.stringify({ ...user, name: name }));
     history.push("/survey");
   };
 
@@ -44,7 +45,7 @@ const VerifyName = () => {
       <br />
       <button
         type="submit"
-        className="bg-indigo-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-indigo-700 transition"
+        className="bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition"
       >
         Submit
       </button>

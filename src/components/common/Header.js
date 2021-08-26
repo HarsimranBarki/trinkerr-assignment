@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
+import React, { useContext, useEffect } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
 
 function Header() {
@@ -7,28 +8,44 @@ function Header() {
   const history = useHistory();
 
   const logoutUser = () => {
+    localStorage.setItem("user", null);
     setUser(null);
     history.push("/");
   };
+
   return (
-    <nav className="px-4 py-5 w-full font-medium">
+    <nav className=" py-5 w-full font-semibold text-sm  ">
       <div className="container max-w-screen-2xl mx-auto flex justify-between items-center">
         <div className="links space-x-10 flex items-center  ">
-          <p>
-            <Link to="/">Home</Link>
-          </p>
-          <p>
-            <Link to="/about">About</Link>
-          </p>
+          <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
+            <NavLink
+              to="/"
+              exact
+              activeClassName="border-b-2 py-2 border-blue-600 hover:border-blue-900 font-bold"
+            >
+              HOME
+            </NavLink>
+          </motion.button>
+          <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
+            <NavLink
+              to="/survey"
+              exact
+              activeClassName="border-b-2 py-2 border-blue-600 hover:border-blue-900"
+            >
+              SURVEY
+            </NavLink>
+          </motion.button>
         </div>
         <div className="access">
           {user && (
-            <button
-              className="rounded-md bg-blue-600 font-medium  text-white px-5 py-1"
-              onClick={() => logoutUser}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="rounded bg-blue-900 font-medium  text-white px-5 py-2"
+              onClick={logoutUser}
             >
-              Logout
-            </button>
+              LOGOUT
+            </motion.button>
           )}
         </div>
       </div>
