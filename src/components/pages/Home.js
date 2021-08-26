@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import VerifyPhone from "../forms/VerifyPhone";
 import LoginImage from "../../images/login.svg";
 import VerifyOTP from "../forms/VerifyOTP";
 import VerifyName from "../forms/VerifyName";
 import { AnimatePresence } from "framer-motion";
+import { UserContext } from "../../libs/userContext";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [signupState, setSignupState] = useState("phone");
+  const { user } = useContext(UserContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) {
+      console.log("user", user);
+      history.push("/survey");
+    }
+  }, [user, history]);
 
   return (
     <div className=" w-screen flex h-screen  justify-between items-center">

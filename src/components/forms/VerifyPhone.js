@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { UserContext } from "../../libs/userContext";
 
 const VerifyPhone = ({ setSignupState }) => {
   const [phone, setPhone] = useState("");
   const toastGenerate = (message) => toast.error(message);
+  const { user, setUser } = useContext(UserContext);
 
   // Regex For Formatting Input Should Be Number
   const onlyNumbers = (e) => {
