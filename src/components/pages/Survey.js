@@ -5,15 +5,18 @@ import { UserContext } from "../../libs/userContext";
 import ImageCard from "../card/ImageCard";
 import Header from "../common/Header";
 import { imageCollection } from "../../libs/imageCollection";
+import toast, { Toaster } from "react-hot-toast";
 
 const Survey = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   let history = useHistory();
+  const [swipedCount, setSwipeCount] = useState(user.totalSwiped);
   const [currentImage, setCurrentImage] = useState(() => {
-    if (user.totalSwiped === 0) return imageCollection[0];
-    if (user.totalSwiped !== 5) return imageCollection[user.totalSwiped];
+    if (swipedCount === 0) return imageCollection[0];
+    if (swipedCount !== 5) return imageCollection[swipedCount];
     return null;
   });
+  const toastGenerate = (message) => toast.success(message);
 
   const variants = {
     visible: {
@@ -31,13 +34,56 @@ const Survey = () => {
     },
   };
 
+  const handleImage = (direction) => {
+    if (swipedCount === 5) return;
+    toastGenerate(
+      `${user.name} you have ${
+        direction === "left" ? "accepted" : "rejected"
+      } the image`
+    );
+    setSwipeCount((prev) => prev + 1);
+    setUser({ ...user, totalSwipedSwiped: swipedCount + 1 });
+    updateLocalStorage();
+    setCurrentImage(imageCollection[swipedCount + 1]);
+  };
+
+  const updateLocalStorage = () => {
+    let localUser = JSON.parse(localStorage.getItem("user"));
+    let localCollection = JSON.parse(localStorage.getItem("userCollection"));
+
+    localUser.totalSwiped = swipedCount + 1;
+    localCollection.map((e) => {
+      if (e.phone === user.phone) e.totalSwiped = swipedCount + 1;
+    });
+
+    localStorage.setItem("user", JSON.stringify(localUser));
+    localStorage.setItem("userCollection", JSON.stringify(localCollection));
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 37) {
+      event.stopPropagation();
+      handleImage("left");
+    } else if (event.keyCode === 39) {
+      event.stopPropagation();
+      handleImage("right");
+    } else {
+      return null;
+    }
+  };
+
   useEffect(() => {
     if (!user) history.push("/");
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
   }, [user, history]);
 
   return (
     <div className="p-10">
       <Header />
+      <Toaster position="bottom-center" reverseOrder={false} />
       <div className="container max-w-screen-2xl m-auto flex  flex-wrap py-10">
         <motion.div
           className="flex-1"
@@ -51,7 +97,9 @@ const Survey = () => {
           {currentImage ? (
             <ImageCard url={currentImage.imageUrl} name={currentImage.name} />
           ) : (
-            <p>`${user.name}, you have rated all the images. Thank You!`</p>
+            <p className="mt-10 text-xl">
+              {user.name}, you have rated all the images. Thank You!
+            </p>
           )}
         </motion.div>
         <motion.div
