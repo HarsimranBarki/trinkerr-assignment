@@ -14,18 +14,22 @@ function Header() {
   };
 
   return (
-    <nav className=" py-5 w-full font-semibold text-sm  ">
+    <nav className=" pb-5 w-full font-semibold text-sm  ">
       <div className="container max-w-screen-2xl mx-auto flex justify-between items-center">
         <div className="links space-x-10 flex items-center  ">
           <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
-            <NavLink
-              to="/"
-              exact
-              className="py-2  font-medium"
-              activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
-            >
-              HOME
-            </NavLink>
+            {user ? (
+              <p className="py-2  font-medium">HOME</p>
+            ) : (
+              <NavLink
+                to="/"
+                exact
+                className="py-2  font-medium"
+                activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
+              >
+                HOME
+              </NavLink>
+            )}
           </motion.button>
           <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
             <NavLink

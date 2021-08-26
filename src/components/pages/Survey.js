@@ -12,9 +12,9 @@ const Survey = () => {
     if (!user) history.push("/");
   }, [user, history]);
   return (
-    <>
+    <div className="p-10">
       <Header />
-      <div className="container max-w-screen-2xl m-auto flex  py-10">
+      <div className="container max-w-screen-2xl m-auto flex  flex-wrap py-10">
         <motion.div
           className="flex-1"
           initial={{
@@ -25,6 +25,7 @@ const Survey = () => {
             x: 0,
             opacity: 1,
           }}
+          transition={{ duration: 0.5 }}
           exit={{
             x: 10,
             opacity: 0,
@@ -33,7 +34,22 @@ const Survey = () => {
           <h2 className="text-4xl font-semibold">Hi {user?.name}</h2>
           <p className="text-sm mt-1">Welcome to the survey</p>
         </motion.div>
-        <motion.div className="flex-1  bg-blue-100 rounded p-5">
+        <motion.div
+          className="flex-1  bg-blue-100 rounded p-5"
+          initial={{
+            x: -10,
+            opacity: 0,
+          }}
+          animate={{
+            x: 0,
+            opacity: 1,
+          }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          exit={{
+            x: 10,
+            opacity: 0,
+          }}
+        >
           <h3 className="text-2xl font-medium">Instructions</h3>
           <div className="flex font-semobold flex-col space-y-1 mt-3 text-sm ">
             <p>
@@ -48,7 +64,7 @@ const Survey = () => {
           </div>
         </motion.div>
       </div>
-    </>
+    </div>
   );
 };
 

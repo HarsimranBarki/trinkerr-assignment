@@ -21,8 +21,11 @@ const VerifyName = () => {
   const validateInput = (e) => {
     e.preventDefault();
     if (name.length === "") return toastGenerate("Name can't be empty");
-    setUser({ ...user, name: name });
-    localStorage.setItem("user", JSON.stringify({ ...user, name: name }));
+    setUser({ ...user, name: name, totalSwiped: 0 });
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...user, name: name, totalSwiped: 0 })
+    );
     updateUserCollection();
     history.push("/survey");
   };
@@ -30,7 +33,7 @@ const VerifyName = () => {
   const updateUserCollection = () => {
     let userCollection =
       JSON.parse(localStorage.getItem("userCollection")) || [];
-    let current = { ...user, name: name };
+    let current = { ...user, name: name, totalSwiped: 0 };
     userCollection.push(current);
     localStorage.setItem("userCollection", JSON.stringify(userCollection));
   };
