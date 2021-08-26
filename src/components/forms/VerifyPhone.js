@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { UserContext } from "../../libs/userContext";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 const VerifyPhone = ({ setSignupState }) => {
   const [phone, setPhone] = useState("");
@@ -42,9 +43,9 @@ const VerifyPhone = ({ setSignupState }) => {
       <br />
       <button
         type="submit"
-        className="bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition"
+        className="bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
-        Get OTP
+        Get OTP <FaChevronCircleRight className="inline ml-2" />
       </button>
     </motion.form>
   );
