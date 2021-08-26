@@ -7,7 +7,7 @@ function Header() {
   const history = useHistory();
 
   const logoutUser = () => {
-    setUser({});
+    setUser(null);
     history.push("/");
   };
   return (
@@ -22,7 +22,7 @@ function Header() {
           </p>
         </div>
         <div className="access">
-          {Object.keys(user).length !== 0 && (
+          {user && (
             <button
               className="rounded-md bg-blue-600 font-medium  text-white px-5 py-1"
               onClick={() => logoutUser}

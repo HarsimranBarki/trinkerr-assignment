@@ -5,7 +5,7 @@ import Home from "./components/pages/Home";
 import Survey from "./components/pages/Survey";
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
