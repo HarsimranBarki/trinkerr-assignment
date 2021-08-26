@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const VerifyPhone = () => {
   const [phone, setPhone] = useState("");
+  const toastGenerate = (message) => toast.error(message);
+
   // Regex For Formatting Input Should Be Number
   const onlyNumbers = (e) => {
     e.preventDefault();
@@ -9,13 +12,14 @@ const VerifyPhone = () => {
     setPhone(value);
   };
 
-  const validateInput = (e, size, message) => {
+  const validateInput = (e) => {
     e.preventDefault();
-    if (phone.length !== size) return;
+    if (phone.length !== 10) return toastGenerate("Number should be 10 Digits");
   };
 
   return (
     <div>
+      <Toaster position="bottom-center" reverseOrder={false} />
       <form className="mt-10 " onSubmit={(e) => validateInput(e)}>
         <input
           type="text"
