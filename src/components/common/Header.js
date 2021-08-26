@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <nav className="px-4 py-2 w-full shadow">
+    <nav className="px-4 py-5 w-full">
       <div className="container max-w-screen-2xl mx-auto flex justify-between items-center">
         <div className="links space-x-10 flex items-center  ">
           <p>
@@ -14,7 +14,7 @@ function Header() {
           </p>
         </div>
         <div className="access">
-          <button className="rounded-md bg-gray-100 px-5 py-1">Login</button>
+          <button className="rounded-md bg-gray-200 px-5 py-1">Login</button>
         </div>
       </div>
     </nav>
