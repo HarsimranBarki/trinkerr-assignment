@@ -22,31 +22,38 @@ const Home = () => {
 
   return (
     <div className=" w-screen ">
-      <div className="absolute left-20 top-10 flex">
+      <div className="absolute left-8 sm:left-20 top-5 sm:top-10 flex">
         <FaLeaf className=" text-2xl text-blue-800 mr-3" />
         Simple Survey
       </div>
 
-      <div className="flex h-screen  justify-between items-center">
-        <div className="left mx-auto ">
-          <h1 className="text-5xl font-bold">Signup</h1>
-          <p className="text-sm text-gray-800 mt-3 font-medium">
-            We use OTP for signin into your account
-          </p>
-          <AnimatePresence>
-            {signupState === "phone" && (
-              <VerifyPhone setSignupState={setSignupState} />
-            )}
-            {signupState === "otp" && (
-              <VerifyOTP setSignupState={setSignupState} />
-            )}
-            {signupState === "name" && (
-              <VerifyName setSignupState={setSignupState} />
-            )}
-          </AnimatePresence>
+      <div className="flex h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap">
+        <div className="left  mx-auto  ">
+          <div>
+            <h1 className="text-3xl sm:text-5xl font-bold">Signup</h1>
+            <p className="text-sm text-gray-800 mt-1 sm:mt-3 font-medium">
+              We use OTP for signin into your account
+            </p>
+            <AnimatePresence>
+              {signupState === "phone" && (
+                <VerifyPhone setSignupState={setSignupState} />
+              )}
+              {signupState === "otp" && (
+                <VerifyOTP setSignupState={setSignupState} />
+              )}
+              {signupState === "name" && (
+                <VerifyName setSignupState={setSignupState} />
+              )}
+            </AnimatePresence>
+          </div>
         </div>
-        <div className="right ">
-          <img src={LoginImage} alt="loginImage" className="h-screen w-full" />
+
+        <div className="right w-full sm:w-2/3">
+          <img
+            src={LoginImage}
+            alt="loginImage"
+            className=" h-auto lg:h-screen w-full"
+          />
         </div>
       </div>
     </div>
