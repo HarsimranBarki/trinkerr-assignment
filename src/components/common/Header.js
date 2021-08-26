@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { FaLeaf } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
 
 function Header() {
@@ -15,32 +16,12 @@ function Header() {
 
   return (
     <nav className=" pb-5 w-full font-semibold text-sm  ">
-      <div className="container max-w-screen-2xl mx-auto flex justify-between items-center">
+      <div className="container max-w-screen-8xl mx-auto flex justify-between items-center">
         <div className="links space-x-10 flex items-center  ">
-          <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
-            {user ? (
-              <p className="py-2  font-medium">HOME</p>
-            ) : (
-              <NavLink
-                to="/"
-                exact
-                className="py-2  font-medium"
-                activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
-              >
-                HOME
-              </NavLink>
-            )}
-          </motion.button>
-          <motion.button whileHover={{ scale: 1.0 }} whileTap={{ scale: 0.9 }}>
-            <NavLink
-              to="/survey"
-              exact
-              className="py-2  font-medium"
-              activeClassName="border-b-2 border-blue-600 hover:border-blue-900"
-            >
-              SURVEY
-            </NavLink>
-          </motion.button>
+          <div className="flex items-center font-medium cursor-pointer">
+            <FaLeaf className=" text-2xl  text-blue-800 mr-3" />
+            Simple Survey
+          </div>
         </div>
         <div className="access">
           {user && (

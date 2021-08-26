@@ -6,6 +6,7 @@ import VerifyName from "../forms/VerifyName";
 import { AnimatePresence } from "framer-motion";
 import { UserContext } from "../../libs/userContext";
 import { useHistory } from "react-router-dom";
+import { FaLeaf } from "react-icons/fa";
 
 const Home = () => {
   const [signupState, setSignupState] = useState("phone");
@@ -20,26 +21,33 @@ const Home = () => {
   }, [user, history]);
 
   return (
-    <div className=" w-screen flex h-screen  justify-between items-center">
-      <div className="left mx-auto ">
-        <h1 className="text-5xl font-bold">Signup</h1>
-        <p className="text-sm text-gray-800 mt-3 font-medium">
-          We use OTP for signin into your account
-        </p>
-        <AnimatePresence>
-          {signupState === "phone" && (
-            <VerifyPhone setSignupState={setSignupState} />
-          )}
-          {signupState === "otp" && (
-            <VerifyOTP setSignupState={setSignupState} />
-          )}
-          {signupState === "name" && (
-            <VerifyName setSignupState={setSignupState} />
-          )}
-        </AnimatePresence>
+    <div className=" w-screen ">
+      <div className="absolute left-20 top-10 flex">
+        <FaLeaf className=" text-2xl text-blue-800 mr-3" />
+        Simple Survey
       </div>
-      <div className="right ">
-        <img src={LoginImage} alt="loginImage" className="h-screen w-full" />
+
+      <div className="flex h-screen  justify-between items-center">
+        <div className="left mx-auto ">
+          <h1 className="text-5xl font-bold">Signup</h1>
+          <p className="text-sm text-gray-800 mt-3 font-medium">
+            We use OTP for signin into your account
+          </p>
+          <AnimatePresence>
+            {signupState === "phone" && (
+              <VerifyPhone setSignupState={setSignupState} />
+            )}
+            {signupState === "otp" && (
+              <VerifyOTP setSignupState={setSignupState} />
+            )}
+            {signupState === "name" && (
+              <VerifyName setSignupState={setSignupState} />
+            )}
+          </AnimatePresence>
+        </div>
+        <div className="right ">
+          <img src={LoginImage} alt="loginImage" className="h-screen w-full" />
+        </div>
       </div>
     </div>
   );
