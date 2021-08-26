@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { UserContext } from "./libs/userContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
@@ -10,11 +10,6 @@ const App = () => {
   );
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
-  // useEffect(() => {
-  //   let localUser = JSON.parse(localStorage.getItem("user"));
-  //   console.log(localUser, user);
-  //   if (localUser && !user) setUser(user);
-  // }, [user]);
   return (
     <UserContext.Provider value={providerValue}>
       <Router>

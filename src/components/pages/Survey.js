@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
 import Header from "../common/Header";
 
-function Survey() {
+const Survey = () => {
   const { user } = useContext(UserContext);
+  let history = useHistory();
+
+  useEffect(() => {
+    if (!user) history.push("/");
+  }, [user, history]);
   return (
     <>
       <Header />
@@ -30,6 +36,6 @@ function Survey() {
       </div>
     </>
   );
-}
+};
 
 export default Survey;

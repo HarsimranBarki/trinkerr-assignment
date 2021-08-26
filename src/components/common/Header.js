@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import React, { useContext, useEffect } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
 
 function Header() {
