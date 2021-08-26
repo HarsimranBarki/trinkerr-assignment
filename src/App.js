@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { UserContext } from "./libs/userContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/common/Header";
+import Home from "./components/pages/Home";
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -13,7 +14,9 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/about"></Route>
-          <Route path="/"></Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       </Router>
     </UserContext.Provider>
