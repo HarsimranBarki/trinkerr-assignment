@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "../../libs/userContext";
 
 const VerifyName = () => {
   const [name, setName] = useState("");
   const toastGenerate = (message) => toast.error(message);
+  const { user, setUser } = useContext(UserContext);
   const history = useHistory();
 
   // Regex For Formatting Input Should Be Number
@@ -18,6 +20,7 @@ const VerifyName = () => {
   const validateInput = (e) => {
     e.preventDefault();
     if (name.length === "") return toastGenerate("Name can't be empty");
+    setUser({ ...user, name: name });
     history.push("/survey");
   };
 

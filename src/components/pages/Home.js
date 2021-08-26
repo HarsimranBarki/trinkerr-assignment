@@ -13,7 +13,7 @@ const Home = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (Object.keys(user).length !== 0) {
+    if (Object.keys(user).length !== 0 && user?.name?.length !== 0) {
       console.log("user", user);
       history.push("/survey");
     }

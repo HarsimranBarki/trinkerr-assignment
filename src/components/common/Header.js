@@ -1,9 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../../libs/userContext";
 
 function Header() {
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
+
+  const logoutUser = () => {
+    setUser({});
+    history.push("/");
+  };
   return (
-    <nav className="px-4 py-5 w-full">
+    <nav className="px-4 py-5 w-full font-medium">
       <div className="container max-w-screen-2xl mx-auto flex justify-between items-center">
         <div className="links space-x-10 flex items-center  ">
           <p>
@@ -14,7 +22,14 @@ function Header() {
           </p>
         </div>
         <div className="access">
-          <button className="rounded-md bg-gray-200 px-5 py-1">Login</button>
+          {Object.keys(user).length !== 0 && (
+            <button
+              className="rounded-md bg-blue-600 font-medium  text-white px-5 py-1"
+              onClick={() => logoutUser}
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </nav>

@@ -18,6 +18,7 @@ const VerifyPhone = ({ setSignupState }) => {
   const validateInput = (e) => {
     e.preventDefault();
     if (phone.length !== 10) return toastGenerate("Number should be 10 Digits");
+    setUser({ ...user, phone: phone });
     setSignupState("otp");
   };
 
