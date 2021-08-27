@@ -91,7 +91,7 @@ const Survey = () => {
     if (!user) history.push("/");
     let timer = setTimeout(() => {
       handleImage("skipped");
-    }, 500000);
+    }, 5000);
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
