@@ -22,12 +22,12 @@ const Home = () => {
 
   return (
     <div className=" w-screen ">
-      <div className="absolute left-8 sm:left-20 top-5 sm:top-10 flex">
+      <div className=" absolute left-8 sm:left-20 top-5 sm:top-10 flex">
         <FaLeaf className=" text-2xl text-blue-800 mr-3" />
         Simple Survey
       </div>
 
-      <div className="flex h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap">
+      <div className="flex min-h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap">
         <div className="left  mx-auto  ">
           <div>
             <h1 className="text-3xl sm:text-5xl font-bold">Signup</h1>

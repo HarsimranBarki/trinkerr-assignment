@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../libs/userContext";
@@ -91,7 +91,7 @@ const Survey = () => {
     if (!user) history.push("/");
     let timer = setTimeout(() => {
       handleImage("skipped");
-    }, 5000);
+    }, 500000);
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
@@ -102,7 +102,7 @@ const Survey = () => {
   return (
     <div className="p-10">
       <Header />
-      <Toaster position="bottom-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container max-w-screen-2xl m-auto flex  flex-wrap py-10 ">
         <motion.div
           className="flex-1 mb-10"
@@ -113,16 +113,23 @@ const Survey = () => {
         >
           <h2 className="text-4xl font-semibold">Hi {user?.name}</h2>
           <p className="text-sm mt-1">Welcome to the survey</p>
-          {currentImage ? (
-            <ImageCard url={currentImage.imageUrl} name={currentImage.name} />
-          ) : (
-            <p className="mt-10 text-xl">
-              {user.name}, you have rated all the images. Thank You!
-            </p>
-          )}
+
+          <AnimatePresence>
+            {currentImage ? (
+              <ImageCard
+                url={currentImage.imageUrl}
+                name={currentImage.name}
+                handleImage={handleImage}
+              />
+            ) : (
+              <p className="mt-10 text-xl">
+                {user.name}, you have rated all the images. Thank You!
+              </p>
+            )}
+          </AnimatePresence>
         </motion.div>
         <motion.div
-          className="flex-1  bg-blue-100 rounded p-5"
+          className="flex-1  bg-blue-100 rounded p-5 h-full"
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.5, delay: 0.2 }}
