@@ -89,15 +89,18 @@ const Survey = () => {
 
   useEffect(() => {
     if (!user) history.push("/");
-    let timer = setTimeout(() => {
-      handleImage("skipped");
-    }, 5000);
+    let timer = null;
+    if (swipedCount <= 5) {
+      timer = setTimeout(() => {
+        handleImage("skipped");
+      }, 5000);
+    }
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
       clearTimeout(timer);
     };
-  }, [user, history, handleImage, handleKeyPress]);
+  }, [user, history, handleImage, handleKeyPress, swipedCount]);
 
   return (
     <div className="p-10">
