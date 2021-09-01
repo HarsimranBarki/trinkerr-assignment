@@ -22,3 +22,46 @@ it("test phone", () => {
   expect(wrapper.find("button")).toBeTruthy();
   expect(wrapper.find("input")).toBeTruthy();
 });
+
+describe("test name input", () => {
+  const setSignupState = jest.fn();
+  const history = createMemoryHistory();
+  it("Updates on change", () => {
+    render(
+      <UserProvider>
+        <VerifyName setSignupState={setSignupState} history={history} />
+      </UserProvider>
+    );
+
+    const buttonPhone = screen.queryByTestId("button");
+    const inputName = screen.queryByTestId("input");
+
+    fireEvent.change(inputName, { target: { value: "James" } });
+    fireEvent.click(buttonPhone);
+    expect(inputName.value).toBe("James");
+    let vals = inputName.value.length;
+    expect(vals).not.toBeNull();
+  });
+});
+
+describe("test phone input empty value", () => {
+  const setSignupState = jest.fn();
+  localStorage.setItem("userCollections", []);
+  const history = createMemoryHistory();
+  it("Updates on change", () => {
+    render(
+      <UserProvider>
+        <VerifyName setSignupState={setSignupState} history={history} />
+      </UserProvider>
+    );
+
+    const buttonPhone = screen.queryByTestId("button");
+    const inputName = screen.queryByTestId("input");
+
+    inputName.value = "";
+    fireEvent.click(buttonPhone);
+    let vals = inputName.value.length;
+
+    expect(vals).not.toBeNull();
+  });
+});

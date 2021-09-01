@@ -20,6 +20,7 @@ const VerifyPhone = ({ setSignupState }) => {
     e.preventDefault();
     if (phone.length !== 10) return toastGenerate("Number should be 10 Digits");
     setUser({ ...user, phone: phone });
+    localStorage.setItem("user", JSON.stringify({ phone: phone }));
     setSignupState("otp");
   };
 

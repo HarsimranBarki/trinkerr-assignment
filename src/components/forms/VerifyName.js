@@ -40,15 +40,15 @@ const VerifyName = ({ history }) => {
   useEffect(() => {
     let userCollection =
       JSON.parse(localStorage.getItem("userCollection")) || [];
-
-    let findUser = userCollection.find((e) => e.phone === user.phone);
+    let local = JSON.parse(localStorage.getItem("user"));
+    let findUser = userCollection.find((e) => e.phone === local.phone);
 
     if (findUser) {
       localStorage.setItem("user", JSON.stringify(findUser));
       setUser(findUser);
-      if (findUser) history.push("/survey");
+      history.push("/survey");
     }
-  }, [user, history, setUser]);
+  }, [history, setUser]);
 
   return (
     <motion.form
