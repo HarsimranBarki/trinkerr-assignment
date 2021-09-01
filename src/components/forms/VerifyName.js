@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { useHistory } from "react-router-dom";
+
 import { UserContext } from "../../libs/userContext";
 import { FaChevronCircleRight } from "react-icons/fa";
 
-const VerifyName = () => {
+const VerifyName = ({ history }) => {
   const [name, setName] = useState("");
   const toastGenerate = (message) => toast.error(message);
   const { user, setUser } = useContext(UserContext);
-  const history = useHistory();
 
   // Regex For Formatting Input Should Be Number
   const onlyAplhabets = (e) => {

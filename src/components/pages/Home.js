@@ -42,7 +42,7 @@ const Home = () => {
                 <VerifyOTP setSignupState={setSignupState} />
               )}
               {signupState === "name" && (
-                <VerifyName setSignupState={setSignupState} />
+                <VerifyName setSignupState={setSignupState} history={history} />
               )}
             </AnimatePresence>
           </div>
