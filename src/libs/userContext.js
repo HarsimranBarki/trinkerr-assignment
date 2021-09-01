@@ -1,5 +1,16 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 
-const UserContext = React.createContext(null);
+export const UserContext = React.createContext(null);
 
-export { UserContext };
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
+  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+
+  return (
+    <UserContext.Provider value={providerValue}>
+      {children}
+    </UserContext.Provider>
+  );
+};
