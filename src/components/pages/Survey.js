@@ -125,7 +125,7 @@ const Survey = () => {
                 handleImage={handleImage}
               />
             ) : (
-              <p className="mt-10 text-xl">
+              <p className="mt-10 text-xl" id="thank-you-message">
                 {user.name}, you have rated all the images. Thank You!
               </p>
             )}
