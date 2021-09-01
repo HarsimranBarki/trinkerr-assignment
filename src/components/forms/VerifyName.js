@@ -67,10 +67,12 @@ const VerifyName = () => {
         value={name}
         onChange={(e) => onlyAplhabets(e)}
         autoFocus
+        data-testid="input"
       />
       <br />
       <button
         type="submit"
+        data-testid="button"
         className="bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
         Submit <FaChevronCircleRight className="inline ml-2" />

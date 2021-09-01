@@ -37,12 +37,16 @@ const VerifyPhone = ({ setSignupState }) => {
         className="form-input -1 px-3 py-2 md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your Number"
         value={phone}
+        data-testid="input"
         onChange={(e) => onlyNumbers(e, "phone")}
+        id="phoneInput"
         autoFocus
       />
       <br />
       <button
         type="submit"
+        id="verifyPhoneButton"
+        data-testid="button"
         className="bg-blue-600 text-indigo-50 px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
         Get OTP <FaChevronCircleRight className="inline ml-2" />
