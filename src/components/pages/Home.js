@@ -22,16 +22,16 @@ const Home = () => {
 
   return (
     <div className=" w-screen ">
-      <div className="flex p-4 sm:absolute left-8 sm:left-20 top-5 sm:top-10 ">
+      <div className="flex p-4 lg:absolute left-8 sm:left-20 top-5 sm:top-10 ">
         <FaLeaf className=" text-2xl text-blue-800 mr-3" />
         Simple Survey
       </div>
 
-      <div className="flex min-h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap">
+      <div className="flex h-80 min-h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap sm:flex-nowrap">
         <div className="left  mx-auto  ">
           <div>
-            <h1 className="text-3xl sm:text-5xl font-bold">Signup</h1>
-            <p className="text-sm text-gray-800 mt-1 sm:mt-3 font-medium">
+            <h1 className="text-3xl md:text-5xl font-bold">Signup</h1>
+            <p className="text-sm text-gray-800 mt-1 md:mt-3 font-medium">
               We use OTP for signin into your account
             </p>
             <AnimatePresence>
