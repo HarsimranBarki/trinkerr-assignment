@@ -42,7 +42,7 @@ const ImageCard = ({ url, name, handleImage }) => {
           handleImage("right");
         }
       }}
-      className="  max-h-sm w-100 sm:max-w-sm  bg-blue-100 p-5 mt-5 shadow-md"
+      className="  max-h-sm w-100 sm:max-w-sm  bg-blue-100 p-5 mt-5 shadow-md swipe-image"
     />
   );
 };

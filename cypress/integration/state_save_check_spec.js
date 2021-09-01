@@ -16,6 +16,7 @@ describe("Checking Preserved State", () => {
     cy.findByRole("button", { name: /submit/i }).click();
 
     cy.wait(1000);
+
     cy.get("body").trigger("keydown", { keyCode: 37, which: 37 });
     cy.wait(1000);
     cy.get("body").trigger("keydown", { keyCode: 37, which: 37 });
