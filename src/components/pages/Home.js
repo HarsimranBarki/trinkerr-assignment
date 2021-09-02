@@ -7,6 +7,8 @@ import { AnimatePresence } from "framer-motion";
 import { UserContext } from "../../libs/userContext";
 import { useHistory } from "react-router-dom";
 import { FaLeaf } from "react-icons/fa";
+import SvgComponent from "../../images/SvgComponent";
+import Header from "../common/Header";
 
 const Home = () => {
   const [signupState, setSignupState] = useState("phone");
@@ -21,17 +23,14 @@ const Home = () => {
   }, [user, history]);
 
   return (
-    <div className=" w-screen ">
-      <div className="flex p-4 lg:absolute left-8 sm:left-20 top-5 sm:top-10 ">
-        <FaLeaf className=" text-2xl text-blue-800 mr-3" />
-        Simple Survey
-      </div>
+    <div className=" w-full h-screen  ">
+      <Header />
 
-      <div className="flex h-80 min-h-screen px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap sm:flex-nowrap">
+      <div className="flex h-80 px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap sm:flex-nowrap">
         <div className="left  mx-auto  ">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold">Signup</h1>
-            <p className="text-sm text-gray-800 mt-1 md:mt-3 font-medium">
+            <p className="text-sm text-gray-500 mt-1 md:mt-3 font-medium">
               We use OTP for signin into your account
             </p>
             <AnimatePresence>
@@ -48,12 +47,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="right w-full sm:w-2/3">
-          <img
-            src={LoginImage}
-            alt="loginImage"
-            className=" h-auto lg:h-screen w-full"
-          />
+        <div className="right w-full ">
+          <img src={LoginImage} alt="logo" />
         </div>
       </div>
     </div>

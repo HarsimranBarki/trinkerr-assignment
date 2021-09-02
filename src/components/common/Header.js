@@ -15,8 +15,8 @@ function Header() {
   };
 
   return (
-    <nav className=" pb-5 w-full font-semibold text-sm  ">
-      <div className="container max-w-screen-8xl mx-auto flex justify-between items-center">
+    <nav className=" w-full font-semibold text-sm  ">
+      <div className="flex justify-between flex-row text-left  py-4 px-6 bg-white shadow  w-full items-center ">
         <div className="links space-x-10 flex items-center  ">
           <div className="flex items-center font-medium cursor-pointer">
             <FaLeaf className=" text-2xl  text-blue-800 mr-3" />
