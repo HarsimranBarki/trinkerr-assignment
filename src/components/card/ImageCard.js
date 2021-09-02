@@ -7,7 +7,7 @@ import {
 
 import React from "react";
 
-const ImageCard = ({ url, name, handleImage }) => {
+const ImageCard = ({ url, name, handleImage, id }) => {
   const x = useMotionValue(0);
   const xRange = [-200, -100, 100, 200];
   const opacityRange = [0, 1, 1, 0];
@@ -19,6 +19,7 @@ const ImageCard = ({ url, name, handleImage }) => {
     <motion.img
       src={url}
       center
+      id={id}
       // Card can be drag only on x-axis
       data-testid="cardImage"
       style={{ opacity, x }}

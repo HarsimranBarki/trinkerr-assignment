@@ -12,3 +12,27 @@ exports[`Survey Survey: should render correctly 1`] = `
   <Survey />
 </ContextProvider>
 `;
+
+exports[`Survey setSwipeCount: totalSwiped is set to 0 render Image 1`] = `
+<img
+  alt="one"
+  class="  max-h-sm w-100 sm:max-w-sm  bg-blue-100 p-5 mt-5 shadow-md swipe-image"
+  data-testid="cardImage"
+  draggable="false"
+  id="1"
+  name="one"
+  src="one.png"
+  style="opacity: 1; transform: none; user-select: none;"
+/>
+`;
+
+exports[`Survey setSwipeCount: totalSwiped is set to 5 don't render Image 1`] = `
+<p
+  class="mt-10 text-xl"
+  data-testid="thank-you-message"
+  id="thank-you-message"
+>
+  Robin
+  , you have rated all the images. Thank You!
+</p>
+`;

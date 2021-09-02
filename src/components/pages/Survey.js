@@ -120,12 +120,17 @@ const Survey = () => {
           <AnimatePresence>
             {currentImage ? (
               <ImageCard
+                id={currentImage.id}
                 url={currentImage.imageUrl}
                 name={currentImage.name}
                 handleImage={handleImage}
               />
             ) : (
-              <p className="mt-10 text-xl" id="thank-you-message">
+              <p
+                className="mt-10 text-xl"
+                id="thank-you-message"
+                data-testid="thank-you-message"
+              >
                 {user.name}, you have rated all the images. Thank You!
               </p>
             )}
