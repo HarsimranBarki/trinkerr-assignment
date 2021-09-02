@@ -1,68 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VerifyPhone: should render correctly 1`] = `
-<form
-  className="mt-10 "
-  onSubmit={[Function]}
-  style={
+exports[`VerifyPhone VerifyPhone: should render correctly 1`] = `
+<ContextProvider
+  value={
     Object {
-      "opacity": 0,
-      "transform": "translateX(-10px) translateZ(0)",
+      "setUser": [Function],
+      "user": null,
     }
   }
 >
-  <div
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    style={
-      Object {
-        "bottom": 16,
-        "left": 16,
-        "pointerEvents": "none",
-        "position": "fixed",
-        "right": 16,
-        "top": 16,
-        "zIndex": 9999,
-      }
+  <VerifyPhone />
+</ContextProvider>
+`;
+
+exports[`VerifyPhone: should render correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "setUser": [Function],
+      "user": null,
     }
-  />
-  <input
-    autoFocus={true}
-    className="form-input -1 px-3 py-2 w-full md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
-    data-testid="input"
-    id="phoneInput"
-    onChange={[Function]}
-    placeholder="Enter Your Number"
-    type="text"
-    value=""
-  />
-  <br />
-  <button
-    className="bg-blue-600 text-indigo-50  px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
-    data-testid="button"
-    id="verifyPhoneButton"
-    type="submit"
-  >
-    Get OTP 
-    <svg
-      className="inline ml-2"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      strokeWidth="0"
-      style={
-        Object {
-          "color": undefined,
-        }
-      }
-      viewBox="0 0 512 512"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"
-      />
-    </svg>
-  </button>
-</form>
+  }
+>
+  <VerifyPhone />
+</ContextProvider>
 `;
