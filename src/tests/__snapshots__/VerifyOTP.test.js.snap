@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VerifyPhone VerifyPhone: should render correctly 1`] = `
+exports[`VerifyOTP VerifyOTP: should render correctly 1`] = `
 <ContextProvider
   value={
     Object {
@@ -9,6 +9,8 @@ exports[`VerifyPhone VerifyPhone: should render correctly 1`] = `
     }
   }
 >
-  <VerifyPhone />
+  <VerifyOTP
+    setSignupState={[MockFunction]}
+  />
 </ContextProvider>
 `;

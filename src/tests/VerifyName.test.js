@@ -1,32 +1,28 @@
-import React, { useContext } from "react";
-import { mount } from "enzyme";
-import VerifyName from "../components/forms/VerifyName";
-import { createMemoryHistory } from "history";
-import Enzyme from "enzyme";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import Enzyme, { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
+import { createMemoryHistory } from "history";
+import React from "react";
+import VerifyName from "../components/forms/VerifyName";
 import { UserProvider } from "../libs/userContext";
-import { render, screen, fireEvent } from "@testing-library/react";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it("test phone", () => {
-  const TestComponent = () => {
-    return <VerifyName />;
-  };
-  const wrapper = mount(
-    <UserProvider>
-      <TestComponent />
-    </UserProvider>
-  );
-
-  expect(wrapper.find("button")).toBeTruthy();
-  expect(wrapper.find("input")).toBeTruthy();
-});
-
-describe("test name input", () => {
+describe("VerifyName", () => {
   const setSignupState = jest.fn();
   const history = createMemoryHistory();
-  it("Updates on change", () => {
+  it("VerifyName: should render correctly", () => {
+    const wrapper = shallow(
+      <UserProvider>
+        <VerifyName setSignupState={setSignupState} history={history} />
+      </UserProvider>
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("VerifyName: should have correct props ( :name )", () => {
     render(
       <UserProvider>
         <VerifyName setSignupState={setSignupState} history={history} />
@@ -42,19 +38,13 @@ describe("test name input", () => {
     let vals = inputName.value.length;
     expect(vals).not.toBeNull();
   });
-});
 
-describe("test phone input empty value", () => {
-  const setSignupState = jest.fn();
-  localStorage.setItem("userCollections", []);
-  const history = createMemoryHistory();
-  it("Updates on change", () => {
+  it("VerifyName: should not allow null values", () => {
     render(
       <UserProvider>
         <VerifyName setSignupState={setSignupState} history={history} />
       </UserProvider>
     );
-
     const buttonPhone = screen.queryByTestId("button");
     const inputName = screen.queryByTestId("input");
 
