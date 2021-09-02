@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import VerifyPhone from "../forms/VerifyPhone";
-import LoginImage from "../../images/login.svg";
-import VerifyOTP from "../forms/VerifyOTP";
-import VerifyName from "../forms/VerifyName";
 import { AnimatePresence } from "framer-motion";
-import { UserContext } from "../../libs/userContext";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FaLeaf } from "react-icons/fa";
-import SvgComponent from "../../images/SvgComponent";
+import LoginImage from "../../images/login.svg";
+import { UserContext } from "../../libs/userContext";
 import Header from "../common/Header";
+import VerifyName from "../forms/VerifyName";
+import VerifyOTP from "../forms/VerifyOTP";
+import VerifyPhone from "../forms/VerifyPhone";
 
 const Home = () => {
   const [signupState, setSignupState] = useState("phone");

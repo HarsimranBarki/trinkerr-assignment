@@ -6,6 +6,7 @@ import { createMemoryHistory } from "history";
 import React from "react";
 import VerifyName from "../components/forms/VerifyName";
 import { UserProvider } from "../libs/userContext";
+import { MemoryRouter } from "react-router-dom";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -15,11 +16,13 @@ describe("VerifyName", () => {
   it("VerifyName: should render correctly", () => {
     const wrapper = shallow(
       <UserProvider>
-        <VerifyName setSignupState={setSignupState} history={history} />
+        <MemoryRouter initialEntries={["/"]} key={0}>
+          <VerifyName setSignupState={setSignupState} history={history} />
+        </MemoryRouter>
       </UserProvider>
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(removeKeys(toJson(wrapper.find(VerifyName)))).toMatchSnapshot();
   });
 
   it("VerifyName: should have correct props ( :name )", () => {
@@ -55,3 +58,17 @@ describe("VerifyName", () => {
     expect(vals).not.toBeNull();
   });
 });
+
+export function removeKeys(object) {
+  if (object === undefined || object === null) {
+    return object;
+  }
+  Object.keys(object).forEach((key) => {
+    if (typeof object[key] === "object") {
+      removeKeys(object[key]);
+    } else if (key === "key") {
+      delete object[key];
+    }
+  });
+  return object;
+}
