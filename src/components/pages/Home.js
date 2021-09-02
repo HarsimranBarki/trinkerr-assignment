@@ -23,12 +23,12 @@ const Home = () => {
   }, [user, history]);
 
   return (
-    <div className=" w-full h-screen  ">
+    <div className=" w-full h-screen flex flex-col ">
       <Header />
 
-      <div className="flex h-80 px-0 sm:px-10 max-w-full sm:max-w-screen-2xl mx-auto  justify-between items-center flex-wrap sm:flex-nowrap">
-        <div className="left  mx-auto  ">
-          <div>
+      <div className="flex-row sm:flex-col h-full">
+        <div className="flex h-full px-10 max-w-full sm:max-w-screen-2xl mx-auto justify-between items-center flex-wrap sm:flex-nowrap">
+          <div className="left mx-auto  ">
             <h1 className="text-3xl md:text-5xl font-bold">Signup</h1>
             <p className="text-sm text-gray-500 mt-1 md:mt-3 font-medium">
               We use OTP for signin into your account
@@ -45,10 +45,10 @@ const Home = () => {
               )}
             </AnimatePresence>
           </div>
-        </div>
 
-        <div className="right w-full ">
-          <img src={LoginImage} alt="logo" />
+          <div className="right w-full sm:w-2/3 ">
+            <img src={LoginImage} alt="logo" />
+          </div>
         </div>
       </div>
     </div>

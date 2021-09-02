@@ -32,7 +32,7 @@ const VerifyOTP = ({ setSignupState }) => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <input
         type="text"
-        className="form-input px-3 py-2 md:px-4 md:py-2  border-gray-300 rounded mt-2 shadow-inner"
+        className="form-input w-full px-3 py-2 md:px-4 md:py-2  border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your OTP"
         data-testid="input"
         value={otp}

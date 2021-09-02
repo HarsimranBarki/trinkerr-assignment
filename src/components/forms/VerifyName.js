@@ -61,7 +61,7 @@ const VerifyName = ({ history }) => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <input
         type="text"
-        className="form-input px-4 py-2 border-gray-300 rounded mt-2 shadow-inner"
+        className="form-input w-full px-4 py-2 border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your Name"
         value={name}
         onChange={(e) => onlyAplhabets(e)}

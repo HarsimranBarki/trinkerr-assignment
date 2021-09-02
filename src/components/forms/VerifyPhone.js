@@ -35,7 +35,7 @@ const VerifyPhone = ({ setSignupState }) => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <input
         type="text"
-        className="form-input -1 px-3 py-2 md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
+        className="form-input -1 px-3 py-2 w-full md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your Number"
         value={phone}
         data-testid="input"
@@ -48,7 +48,7 @@ const VerifyPhone = ({ setSignupState }) => {
         type="submit"
         id="verifyPhoneButton"
         data-testid="button"
-        className="bg-blue-600 text-indigo-50 px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
+        className="bg-blue-600 text-indigo-50  px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
         Get OTP <FaChevronCircleRight className="inline ml-2" />
       </button>
