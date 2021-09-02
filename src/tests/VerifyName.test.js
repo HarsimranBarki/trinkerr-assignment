@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Enzyme, { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -9,6 +9,8 @@ import { UserProvider } from "../libs/userContext";
 import { MemoryRouter } from "react-router-dom";
 
 Enzyme.configure({ adapter: new Adapter() });
+
+afterEach(cleanup);
 
 describe("VerifyName", () => {
   const setSignupState = jest.fn();

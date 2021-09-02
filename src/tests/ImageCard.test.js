@@ -1,7 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import React from "react";
 import ImageCard from "../components/card/ImageCard";
+
+afterEach(cleanup);
 
 describe("ImageCard", () => {
   it("ImageCard: should render correctly", async () => {

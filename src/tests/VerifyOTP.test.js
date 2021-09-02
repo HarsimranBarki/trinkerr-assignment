@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Enzyme, { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -7,6 +7,8 @@ import VerifyOTP from "../components/forms/VerifyOTP";
 import { UserProvider } from "../libs/userContext";
 
 Enzyme.configure({ adapter: new Adapter() });
+
+afterEach(cleanup);
 
 describe("VerifyOTP", () => {
   const setSignupState = jest.fn();

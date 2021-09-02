@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Survey Survey: should render correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "setUser": [Function],
+      "user": null,
+    }
+  }
+>
+  <Survey />
+</ContextProvider>
+`;

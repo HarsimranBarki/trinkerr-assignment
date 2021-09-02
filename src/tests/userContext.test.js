@@ -5,11 +5,14 @@ import { mount } from "enzyme";
 
 import Enzyme from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { cleanup } from "@testing-library/react";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("login", () => {
-  it("user Context is being set correctly", () => {
+afterEach(cleanup);
+
+describe("userContext", () => {
+  it("userContext: should set contex & state correctly", () => {
     const TestComponent = () => {
       const { user, setUser } = React.useContext(UserContext);
       return (
