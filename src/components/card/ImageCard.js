@@ -20,8 +20,11 @@ const ImageCard = ({ url, name, handleImage }) => {
       src={url}
       center
       // Card can be drag only on x-axis
+      data-testid="cardImage"
       style={{ opacity, x }}
       drag="x"
+      name={name}
+      alt={name}
       dragElastic={1}
       dragConstraints={{ left: 0, right: 0 }}
       onDragEnd={(event, info) => {

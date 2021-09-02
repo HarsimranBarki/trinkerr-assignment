@@ -23,12 +23,12 @@ function Header() {
             Simple Survey
           </div>
         </div>
-        <div className="access">
+        <div className="access flex items-center">
           {user?.name && (
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="rounded bg-blue-900 font-medium  text-white px-5 py-2"
+              className="rounded bg-blue-900 font-medium  text-white px-3 py-1"
               onClick={logoutUser}
             >
               LOGOUT

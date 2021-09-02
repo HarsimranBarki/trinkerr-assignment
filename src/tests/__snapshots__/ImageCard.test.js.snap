@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCard ImageCard: should render correctly 1`] = `
+<img
+  className="  max-h-sm w-100 sm:max-w-sm  bg-blue-100 p-5 mt-5 shadow-md swipe-image"
+  data-testid="cardImage"
+  draggable={false}
+  style={
+    Object {
+      "WebkitTouchCallout": "none",
+      "WebkitUserSelect": "none",
+      "opacity": 1,
+      "touchAction": "pan-y",
+      "transform": "none",
+      "userSelect": "none",
+    }
+  }
+/>
+`;

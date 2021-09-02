@@ -106,9 +106,9 @@ const Survey = () => {
     <div>
       <Header />
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="container max-w-screen-2xl m-auto flex  flex-wrap py-10 ">
+      <div className="container max-w-screen-2xl m-auto flex  flex-col lg:flex-row py-4 px-6 py-10 ">
         <motion.div
-          className="flex-1 mb-10"
+          className="flex-1 mb-10 "
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.5, delay: 0.1 }}
