@@ -8,12 +8,13 @@ This is a submission for trinkerr front-end task for Front-End position
 ## Tech Stack
 
 - [**React**](https://reactjs.org/) - Create React App
-- [**Tailwind CSS**](https://tailwindcss.com/) - CSS Utility Framework
+- [**Tailwind CSS**](https://tailwindcss.com/) - CSS Utility Framework With Dark Mode
 - [**Framer Motion**](https://www.framer.com/docs/) - Animation Framework
 - [**React Hot Toast**](https://react-hot-toast.com/) - Toast Notifications
 - [**React Router**](https://reactrouter.com/) - Declarative Routing
 - [**Jest**](https://jestjs.io/) - Unit Testing Framework
 - [**Cypress**](https://www.cypress.io/) - E2E (End To End) Testing Framework
+- [**React Icons**](https://react-icons.github.io/react-icons/) - Icon Library
 
 ## Instruction
 

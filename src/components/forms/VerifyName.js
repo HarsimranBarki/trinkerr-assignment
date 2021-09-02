@@ -4,10 +4,19 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { UserContext } from "../../libs/userContext";
 import { FaChevronCircleRight } from "react-icons/fa";
+import { ThemeContext } from "../../libs/themeContext";
 
 const VerifyName = ({ history }) => {
   const [name, setName] = useState("");
-  const toastGenerate = (message) => toast.error(message);
+  const { theme } = React.useContext(ThemeContext);
+  const toastGenerate = (message) =>
+    toast.error(message, {
+      style: {
+        borderRadius: "10px",
+        background: theme === "dark" ? "#333" : "#FFF",
+        color: theme === "dark" ? "#FFF" : "#333",
+      },
+    });
   const { user, setUser } = useContext(UserContext);
 
   // Regex For Formatting Input Should Be Number
@@ -61,7 +70,7 @@ const VerifyName = ({ history }) => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <input
         type="text"
-        className="form-input w-full px-4 py-2 border-gray-300 rounded mt-2 shadow-inner"
+        className="dark:bg-gray-700 dark:border-gray-700 dark:text-gray-100 form-input w-full px-4 py-2 border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your Name"
         value={name}
         onChange={(e) => onlyAplhabets(e)}
@@ -72,7 +81,7 @@ const VerifyName = ({ history }) => {
       <button
         type="submit"
         data-testid="button"
-        className="bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
+        className="dark:bg-blue-300 dark:text-gray-900 bg-blue-600 text-indigo-50 px-5 py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
         Submit <FaChevronCircleRight className="inline ml-2" />
       </button>

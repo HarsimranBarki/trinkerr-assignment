@@ -6,9 +6,11 @@ import ImageCard from "../card/ImageCard";
 import Header from "../common/Header";
 import { imageCollection } from "../../libs/imageCollection";
 import toast, { Toaster } from "react-hot-toast";
+import { ThemeContext } from "../../libs/themeContext";
 
 const Survey = () => {
   const { user, setUser } = useContext(UserContext);
+  const { theme } = React.useContext(ThemeContext);
   let history = useHistory();
   const [swipedCount, setSwipeCount] = useState(user.totalSwiped);
   const [currentImage, setCurrentImage] = useState(() => {
@@ -56,7 +58,13 @@ const Survey = () => {
       if (direction === "right") message = "rejected";
       if (direction === "skipped") message = "skipped";
 
-      toast.success(`${user.name} you have ${message} the image`);
+      toast.success(`${user.name} you have ${message} the image`, {
+        style: {
+          borderRadius: "10px",
+          background: theme === "dark" ? "#333" : "#FFF",
+          color: theme === "dark" ? "#FFF" : "#333",
+        },
+      });
       setSwipeCount((prev) => prev + 1);
       setUser({ ...user, totalSwipedSwiped: swipedCount + 1 });
       updateLocalStorage();
@@ -69,6 +77,7 @@ const Survey = () => {
       setCurrentImage,
       swipedCount,
       user,
+      theme,
     ]
   );
 
@@ -137,7 +146,7 @@ const Survey = () => {
           </AnimatePresence>
         </motion.div>
         <motion.div
-          className="flex-1  bg-blue-100 rounded p-5 h-full"
+          className="flex-1 dark:bg-gray-700 bg-blue-100 rounded p-5 h-full"
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -147,11 +156,11 @@ const Survey = () => {
           <div className="flex font-semobold flex-col space-y-1 mt-3 text-sm ">
             <p>
               Press Left Arrow Or Swipe Left To{" "}
-              <span className="text-green-800">Accept</span>
+              <span className="dark:text-green-200 text-green-800">Accept</span>
             </p>
             <p>
               Press Rigth Arrow Or Swipe Right To{" "}
-              <span className="text-red-800">Reject</span>
+              <span className="dark:text-red-200 text-red-800">Reject</span>
             </p>
             <p>Images Will Autoskip If Not Interacted</p>
           </div>

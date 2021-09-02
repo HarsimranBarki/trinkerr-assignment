@@ -27,8 +27,10 @@ const Home = () => {
       <div className="flex-row sm:flex-col h-full">
         <div className="flex h-full px-10 max-w-full sm:max-w-screen-2xl mx-auto justify-between items-center flex-wrap sm:flex-nowrap">
           <div className="left mx-auto  ">
-            <h1 className="text-3xl md:text-5xl font-bold">Signup</h1>
-            <p className="text-sm text-gray-500 mt-1 md:mt-3 font-medium">
+            <h1 className="dark:text-white  text-3xl md:text-5xl font-bold">
+              Signup
+            </h1>
+            <p className="dark:text-gray-400 text-sm text-gray-500 mt-1 md:mt-3 font-medium">
               We use OTP for signin into your account
             </p>
             <AnimatePresence>

@@ -3,10 +3,19 @@ import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { UserContext } from "../../libs/userContext";
 import { FaChevronCircleRight } from "react-icons/fa";
+import { ThemeContext } from "../../libs/themeContext";
 
 const VerifyPhone = ({ setSignupState }) => {
   const [phone, setPhone] = useState("");
-  const toastGenerate = (message) => toast.error(message);
+  const { theme } = React.useContext(ThemeContext);
+  const toastGenerate = (message) =>
+    toast.error(message, {
+      style: {
+        borderRadius: "10px",
+        background: theme === "dark" ? "#333" : "#FFF",
+        color: theme === "dark" ? "#FFF" : "#333",
+      },
+    });
   const { user, setUser } = useContext(UserContext);
 
   // Regex For Formatting Input Should Be Number
@@ -35,7 +44,7 @@ const VerifyPhone = ({ setSignupState }) => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <input
         type="text"
-        className="form-input -1 px-3 py-2 w-full md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
+        className="dark:bg-gray-700 dark:border-gray-700 dark:text-gray-100 form-input -1 px-3 py-2 w-full md:px-4 md:py-2 border-gray-300 rounded mt-2 shadow-inner"
         placeholder="Enter Your Number"
         value={phone}
         data-testid="input"
@@ -48,7 +57,7 @@ const VerifyPhone = ({ setSignupState }) => {
         type="submit"
         id="verifyPhoneButton"
         data-testid="button"
-        className="bg-blue-600 text-indigo-50  px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
+        className="bg-blue-600 dark:bg-blue-300 dark:text-gray-900 text-indigo-50  px-3 py-2 md:px-5 md:py-2  font-medium rounded mt-5 hover:bg-blue-700 transition flex items-center"
       >
         Get OTP <FaChevronCircleRight className="inline ml-2" />
       </button>
