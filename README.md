@@ -3,7 +3,7 @@
 This is a submission for trinkerr front-end task for Front-End position
 
 - [Applied To ↗](https://springrecruit.com/applyNow/Trinkerr1572)
-- [Demo on Vercel ↗](https://trinkerr-assignment.vercel.app/)
+- [Demo on Vercel ↗](Demo is offline)
 
 ## Tech Stack
 
